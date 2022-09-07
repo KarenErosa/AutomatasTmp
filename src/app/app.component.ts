@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {TLN} from './tnl'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'automatas';
+  getTLN(){
+    TLN.append_line_numbers('test');
+  }  
 }
+

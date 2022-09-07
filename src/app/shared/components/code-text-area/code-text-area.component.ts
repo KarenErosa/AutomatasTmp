@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TLN } from './tools/tnl';
+
 
 @Component({
   selector: 'app-code-text-area',
@@ -23,6 +25,11 @@ def prueba ( a , b , c ) {\n\
   constructor() { }
 
   ngOnInit(): void {
+    //
+  }
+
+  getTLN(id:string){
+    TLN.append_line_numbers(id);
   }
 
   private checkLine(temp: any) {
@@ -50,10 +57,34 @@ def prueba ( a , b , c ) {\n\
     } else if (event.key == '"') {
       this.agregarCaracterFinal(event, '"', '"', '', 1);
     } else if (event.key == '(') {
-      this.agregarCaracterFinal(event, ' (', ') ', '  ', 3);
+      this.agregarCaracterFinal(event, ' (', ') ', '  ', 1);
+    } else if (event.key == '[') {
+      this.agregarCaracterFinal(event, ' [', '] ', '', 1);
     } else if (event.key == '+') {
       this.agregarCaracterFinal(event, ' ', '+ ', '', 3);
+    } else if (event.key == '-') {
+      this.agregarCaracterFinal(event, ' ', '- ', '', 3);
+    } else if (event.key == '*') {
+      this.agregarCaracterFinal(event, ' ', '* ', '', 3);
+    } else if (event.key == '/') {
+      this.agregarCaracterFinal(event, ' ', '/ ', '', 3);
+    } else if (event.key == '%') {
+      this.agregarCaracterFinal(event, ' ', '% ', '', 3);
+    } else if (event.key == '^') {
+      this.agregarCaracterFinal(event, ' ', '^ ', '', 3);
+    } else if (event.key == ',') {
+      this.agregarCaracterFinal(event, ' ', ', ', '', 3);
+    } else if (event.key == '.') {
+      this.agregarCaracterFinal(event, ' ', '. ', '', 3);
+    } else if (event.key == ':') {
+      this.agregarCaracterFinal(event, ' ', ': ', '', 3);
+    } else if (event.key == ';') {
+      this.agregarCaracterFinal(event, ' ', '; ', '', 3);
+    } else if (event.key == '=') {
+      this.agregarCaracterFinal(event, ' ', '= ', '', 3);
     }
+    
+    
   }
 
   private agregarCaracterFinal(event: any, caracterInicio: string, caracterFinal: string, separador: string, newPos: number) {
